@@ -29,7 +29,7 @@ versão do jogo com as mecânicas principais funcionando
 - No celular vai existir um botão para pular, desviar-se dos obstáculos e coletar o lixo. 
 
 # Diagrama de Navegação:
-![diagrama para documentação](https://user-images.githubusercontent.com/53848638/65910101-64631b80-e3a0-11e9-9191-447b6292dc7d.jpg)
+![diagrama para documentação](https://user-images.githubusercontent.com/53848638/65910286-c9b70c80-e3a0-11e9-951e-6007fe12095a.jpg)
 
 # Regras do Jogo com Sistema de Pontuação:
 - O jogador deverá coletar determinada quantidade de lixo para ganhar pontos. 
