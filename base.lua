@@ -17,7 +17,7 @@ local base = {}
         base.moneys[3]={}
         base.moneys[3].name = "coco"
         base.moneys[3].path = "ui/elements/coco.png"
-        base.moneys[3].value = 0
+        base.moneys[3].value = 1
         base.moneys[3].type = "money"
 
         base.moneys[4]={}
@@ -47,7 +47,7 @@ local base = {}
         base.bills[2]={}
         base.bills[2].name = "cadeira"
         base.bills[2].path = "ui/elements/cadeira.png"
-        base.bills[2].value = 1
+        base.bills[2].value = 0
         base.bills[2].type = "bill"
 
         base.bills[3]={}

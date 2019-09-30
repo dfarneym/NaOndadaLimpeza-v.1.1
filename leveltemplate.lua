@@ -60,21 +60,23 @@ function pauseGame()
 	pauserect:addEventListener("tap", function() return true end)
 	pauseGroup:insert(pauserect)
 	-------------------------------------------------------------------------------
-	--resumebox = display.newImageRect("ui/button/pause.png", display.contentWidth/2+200, display.contentHeight/2+100 )
+	resumebox = display.newImageRect("ui/button/pause.png", display.contentWidth/2+200, display.contentHeight/2+100 )
 		resumebox.x = display.contentWidth/2
 		resumebox.y = display.contentHeight/2
 		pauseGroup:insert(resumebox)
 
-	--resumebtn = display.newImageRect("ui/button/play.png", 60, 60)
+	resumebtn = display.newImageRect("ui/button/play.png", 60, 60)
 		resumebtn.x = display.contentCenterX
 		resumebtn.y = display.contentCenterY -10
 		resumebtn:addEventListener("tap", resumeGame)
 		pauseGroup:insert(resumebtn)
 
-	--quitbtn = display.newImageRect("ui/menu/quit.png", 60, 60)
-	--	quitbtn.x = display.contentCenterX 
-	--	quitbtn.y = display.contentCenterY + 300		
-	--	pauseGroup:insert(quitbtn)
+	helpbtn = display.newImageRect("ui/menu/help.png", 60, 60)
+		helpbtn.x = display.contentCenterX 
+		helpbtn.y = display.contentCenterY + 300		
+		pauseGroup:insert(helpbtn)
+
+
 end
 
 function endGame(event)

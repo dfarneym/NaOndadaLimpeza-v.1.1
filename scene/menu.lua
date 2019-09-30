@@ -25,12 +25,8 @@ local function gotoHighscore()
 	composer.gotoScene( "scene.highscore", { time=800, effect="crossFade" } )
 end
 
-function gotoQuit()
-    if  system.getInfo("platformName")=="Android" then
-        native.requestExit()
-    else
-		os.exit() 
-	end
+local function gotoHelp()
+	composer.gotoScene( "scene.help", { time=800, effect="crossFade" } )
 end
 
 
@@ -53,7 +49,7 @@ local sceneGroup = self.view
 	
     local play = display.newImageRect(mainGroup, "ui/menu/start.png", 100, 70)
     play.x = cX -200
-	play.y = cY +10
+	play.y = cY +10	
 	
     local score = display.newImageRect(mainGroup, "ui/menu/score.png", 100, 70)
 	score.x = cX -140
@@ -62,9 +58,16 @@ local sceneGroup = self.view
     local quit = display.newImageRect(mainGroup, "ui/menu/quit.png", 90, 50)
 	quit.x = cX -40
 	quit.y = cY +100
+
+	local help = display.newImageRect(mainGroup, "ui/menu/help.png", 60, 40)
+	help.x = cX +80
+	help.y = cY +70
+
+	
 	
     play:addEventListener( "tap", gotoGame )
 	score:addEventListener( "tap", gotoHighscore )
+	help:addEventListener( "tap", gotoHelp )
 	
 	
 end
@@ -95,7 +98,7 @@ function scene:hide( event )
 	if ( phase == "will" ) then
 
 	elseif ( phase == "did" ) then
-		-- Code here runs immediately after the scene goes entirely off screen
+		-- O código aqui é executado imediatamente após a cena sair totalmente da tela
 		composer.removeScene("menu")
 		display.remove(backGroup)
 		print( "Removendo background" )
