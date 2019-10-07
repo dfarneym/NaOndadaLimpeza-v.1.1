@@ -47,7 +47,7 @@ local base = {}
         base.bills[2]={}
         base.bills[2].name = "cadeira"
         base.bills[2].path = "ui/elements/cadeira.png"
-        base.bills[2].value = 0
+        base.bills[2].value = 1
         base.bills[2].type = "bill"
 
         base.bills[3]={}

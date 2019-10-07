@@ -244,7 +244,7 @@ end
 
 function level1:createFloor(groundImg)
 	floorGroup = display.newGroup()
-	local groundMin = 300
+	local groundMin = 5
 	local groundMax = 340
 	local groundLevel = groundMin
 	 
