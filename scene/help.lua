@@ -1,5 +1,4 @@
 local composer = require("composer") 	 	
-local physics = require("physics") 		 	
 
 local sounds = require( "soundsfile" )	 	
 
@@ -8,45 +7,8 @@ local scene = composer.newScene()
 
 
 --## Initialize variables ##--
-local json = require( "json" )
-
-local scoresTable = {}
-
-local filePath = system.pathForFile( "scores.json", system.DocumentsDirectory )
 
 local musicTrack
-
-
-local function loadScores()
-
-	local file = io.open( filePath, "r" )
-
-	if file then
-		local contents = file:read( "*a" )
-		io.close( file )
-		scoresTable = json.decode( contents )
-	end
-
-	if ( scoresTable == nil or #scoresTable == 0 ) then
-		scoresTable = { 0, 0, 0, 0, 0 }
-	end
-end
-
-
-local function saveScores()
-
-	for i = #scoresTable, 6, -1 do
-		table.remove( scoresTable, i )
-	end
-
-	local file = io.open( filePath, "w" )
-
-	if file then
-		file:write( json.encode( scoresTable ) )
-		io.close( file )
-	end
-end
-
 
 local function gotoMenu()
 	composer.gotoScene( "scene.menu", { time=800, effect="crossFade" } )
@@ -62,20 +24,9 @@ function scene:create( event )
 
 	local sceneGroup = self.view
 	
-	loadScores()
-
-	--### Insira a pontuação salva do último jogo na tabela ### --
-	table.insert( scoresTable, composer.getVariable( "finalScore" ) )
-	composer.setVariable( "finalScore", 0 )
-
-	--### Classifique as entradas da tabela da maior para a menor ###--
-	local function compare( a, b )
-		return a > b
-	end
-	table.sort( scoresTable, compare )
-
+	
 	-- ### Salvando as Scores ### --
-	saveScores()
+	
 
 	background = display.newImageRect( sceneGroup, "ui/background/help.png", 600, 320 )
 	background.x = display.contentCenterX

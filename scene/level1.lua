@@ -37,6 +37,10 @@ function scene:create( event )
 	local floor = level:createFloor("ui/background/ground1.png")
 	mainGroup:insert(floor)
 	floor.alpha = -0.13
+
+	local floor2 = level:createFloor("ui/background/ground1.png")
+	mainGroup:insert(floor2)
+	floor2.alpha = -0.13
 	
 		
 	physics.addBody(player, "dynamic", { density = 0, friction = 0, bounce = 0})
@@ -131,7 +135,7 @@ function scene:create( event )
 			level:collideInvoices()
 			if level:isAlive() then
 				timer.performWithDelay(1, function()
-					event.other.alpha = 0
+					event.other.alpha = 1
 					event.other = nil
 				end, 1)
 				event.other:removeSelf();
@@ -153,7 +157,7 @@ function scene:create( event )
 	function jumpbtn:touch(event)
 		if(event.phase == "began") then
 			jumpLimit = jumpLimit + 1
-			if jumpLimit < 3 then
+			if jumpLimit < 2 then
 			  physics.addBody(player, "dynamic", { density = 0,radius = 0.01, friction = 0, bounce = 0, gravity = 0 })
 			  player:applyLinearImpulse(0, -0.25, player.x, player.y)
 			end
