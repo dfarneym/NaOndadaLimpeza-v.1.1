@@ -134,16 +134,18 @@ function level1:buildHeader(debitBoolean, lifeBoolean, creditBoolean) --Faixa la
 	headerGroup = display.newGroup()
 	
 	if(creditBoolean == true) then
-		creditText = display.newText("Scores: ".. credit, 0, 0, "Skranji-Regular.ttf", 20)
+		creditText = display.newText("Scores: ".. credit, 0, 0, "Go Sheep.ttf", 25)
 		creditText.x = 100
 		creditText.y = 25
+		creditText: setTextColor(0, 0.8, 1)
 		headerGroup:insert(creditText)
 	end
 
 	if(lifeBoolean == true) then
-		lifeText = display.newText("Lifes: ".. life, 0, 0, "Skranji-Regular.ttf", 20)
-		lifeText.x = 350
+		lifeText = display.newText("Lifes: ".. life, 0, 0, "Go Sheep.ttf", 25)
+		lifeText.x = 380
 		lifeText.y = 25
+		lifeText: setTextColor(0, 0.8, 1)
 		headerGroup:insert(lifeText)
 	end
 

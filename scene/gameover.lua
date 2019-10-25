@@ -15,13 +15,10 @@ local function gotoMenu()
 end
 
 function scene:create( event )
-
-	-- playGameMusic(gameoverbgmusic)
-	-- audio.setVolume( 0.20, { channel=1 } ) 
+	
 
 	local sceneGroup = self.view
 	level:setValues(100,100,3)
-
 
 	-- O código aqui é executado quando a 
 	-- cena é criada pela primeira vez, 

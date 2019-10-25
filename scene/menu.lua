@@ -15,11 +15,13 @@ local cY = display.contentCenterY -- Coordenada Y
 --### Criando uma nova sena do Composer ###--
 local scene = composer.newScene()
 
+
 local function gotoGame()
-	playSFX(losesound)
-	 
-	composer.gotoScene( "scene.level1" )
-end
+	playSFX(losesound)	 
+	composer.gotoScene( "scene.level1" )	
+	
+end	
+
 
 local function gotoHighscore()
 	composer.gotoScene( "scene.highscore", { time=800, effect="crossFade" } )
@@ -27,6 +29,14 @@ end
 
 local function gotoHelp()
 	composer.gotoScene( "scene.help", { time=800, effect="crossFade" } )
+end
+
+function gotoQuit()
+    if  system.getInfo("platformName")=="Android" then
+        native.requestExit()
+    else
+		os.exit() 
+	end
 end
 
 
@@ -60,14 +70,14 @@ local sceneGroup = self.view
 	quit.y = cY +100
 
 	local help = display.newImageRect(mainGroup, "ui/menu/help.png", 60, 40)
-	help.x = cX +80
-	help.y = cY +70
+	help.x = cX +198
+	help.y = cY -90
 
-	
-	
+		
     play:addEventListener( "tap", gotoGame )
 	score:addEventListener( "tap", gotoHighscore )
 	help:addEventListener( "tap", gotoHelp )
+	quit:addEventListener( "tap", gotoQuit )
 	
 	
 end

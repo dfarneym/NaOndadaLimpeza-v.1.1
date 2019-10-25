@@ -8,6 +8,7 @@ local scene = composer.newScene()			-- Cria uma nova cena pelo Composer
 
 composer.recycleOnSceneChange = true		-- Não sei o que faz
 
+
 local backGroup = display.newGroup()		-- bg1 Cria um grupo para o Background
 local mainGroup = display.newGroup()		-- Cria um grupo para o .....
 local uiGroup = display.newGroup()			-- Cria um grupo para o .....
@@ -20,9 +21,10 @@ function scene:create( event )
 	
 	--## Seta o nível atual ## --
 	local sceneGroup = self.view
-	level:setCurrentLevel(1)				
+	level:setCurrentLevel(1)	
 	
-	musicTrack = audio.loadStream( "sound/Surfista.mp3" ) 
+	musicTrack = audio.loadStream( "sound/Surfista.mp3" )
+
 
 	background = level:createBackground(level:getCurrentLevel()) --(OK) Adc o background relativo ao level
 	backGroup:insert(background) -- OK
@@ -30,10 +32,22 @@ function scene:create( event )
 	player = level:createPlayer("ui/sprite/surfista.png", "running")
 	mainGroup:insert(player) -- OK
 
-	level:setValues(1,100,0)		
+	level:setValues(1,100,0)	
 		
-	physics.start()		
-	
+	physics.start()	
+	----------------------------
+	if event.phase == "began" then
+		gotoNextPhase()
+	end
+	 --## Finish!
+
+    -- Finish the game by hiding the controls and displaying the play again button.
+    function finish()
+        controls:hide()
+        -- playAgainButton:show()
+        gotoNextPhase()
+    end
+
 	local floor = level:createFloor("ui/background/ground1.png")
 	mainGroup:insert(floor)
 	floor.alpha = -0.13
@@ -81,7 +95,7 @@ function scene:create( event )
 
 		-- -- ### Ganhando Pontos ##--
 		if( event.other.type == "money") then
-			playSFX(bubblepop)
+			playSFX(trashEffect)			
 
 			if event.other.name == "garrafa" then
 				level:addCredit(event.other.value)
@@ -113,7 +127,7 @@ function scene:create( event )
 
 		-- ### Perdendo Pontos ##--
 		if( event.other.type == "bill") then
-			playSFX(losesound)
+			playSFX(trashEffect2)
 			if ( event.other.name == "LataDeLixo") then
 				level:reducelife(event.other.value)				
 			end	
@@ -155,21 +169,23 @@ function scene:create( event )
 
 --##Jump Function ###--
 	function jumpbtn:touch(event)
+		playSFX(jumpBtnAud)
 		if(event.phase == "began") then
 			jumpLimit = jumpLimit + 1
 			if jumpLimit < 2 then
 			  physics.addBody(player, "dynamic", { density = 0,radius = 0.01, friction = 0, bounce = 0, gravity = 0 })
-			  player:applyLinearImpulse(0, -0.25, player.x, player.y)
+			  player:applyLinearImpulse(0, -0.25, player.x, player.y)			 
 			end
 		jumpLimit = 0
-		end
+		end		
 	end
 
-	jumpbtn:addEventListener("touch", jumpbtn)
+	jumpbtn:addEventListener("touch", jumpbtn)	
 	uiGroup:insert(jumpbtn)
 		
 	local header = level:buildHeader(true, true, true)
 	uiGroup:insert(header)
+	
 
 	level:buildPause(player)
 
@@ -184,7 +200,7 @@ function scene:show( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
-		audio.play( musicTrack, { channel=1, loops=-1 } )
+		audio.play( musicTrack, { channel=1, loops=-1 } )		
 
 	end
 end
@@ -211,6 +227,7 @@ function scene:hide( event )
 		composer.hideOverlay()
 		Runtime:removeEventListener( "collision", onLocalCollision)
 		Runtime:removeEventListener("touch", onTouch)
+		
 	end
 end
 
@@ -230,5 +247,6 @@ scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
+
 
 return scene
