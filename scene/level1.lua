@@ -95,7 +95,19 @@ function scene:create( event )
 
 		-- -- ### Ganhando Pontos ##--
 		if( event.other.type == "money") then
-			playSFX(trashEffect)			
+			playSFX(trashEffect)
+			
+			if event.other.name == "LataDeOleo" then
+				level:addCredit(event.other.value)
+			end
+
+			if event.other.name == "manchaOleo" then
+				level:addCredit(event.other.value)
+			end	
+
+			if event.other.name == "LataDeLixoCheia" then
+				level:addLife(event.other.value)
+			end
 
 			if event.other.name == "garrafa" then
 				level:addCredit(event.other.value)
@@ -109,13 +121,28 @@ function scene:create( event )
 			end			
 
 			if event.other.name == "coco" then
-				level:addLife(event.other.value)
+				level:addCredit(event.other.value)
 			end	
 			
 			if event.other.name == "sacola" then
 				level:addCredit(event.other.value)
+			end							
+			
+			if event.other.name == "lxo1" then
+				level:addCredit(event.other.value)
 			end
 
+			if event.other.name == "lxo2" then
+				level:addCredit(event.other.value)
+			end
+
+			if event.other.name == "lxo3" then
+				level:addCredit(event.other.value)
+			end
+
+			if event.other.name == "lxo4" then
+				level:addCredit(event.other.value)
+			end		
 			
 			level:collideIncomes()
 			timer.performWithDelay(1, function()
@@ -127,10 +154,7 @@ function scene:create( event )
 
 		-- ### Perdendo Pontos ##--
 		if( event.other.type == "bill") then
-			playSFX(trashEffect2)
-			if ( event.other.name == "LataDeLixo") then
-				level:reducelife(event.other.value)				
-			end	
+			playSFX(trashEffect2)			
 		
 			if ( event.other.name == "cadeira") then
 				level:reduceCredit(event.other.value)
@@ -138,13 +162,13 @@ function scene:create( event )
 			end
 
 			if ( event.other.name == "guardaSol") then
-				level:reducelife(event.other.value)
-				
+				level:reducelife(event.other.value)				
 			end		
 			if ( event.other.name == "LataDeLixo2") then
 				level:reduceCredit(event.other.value)
 
-			end				
+			end	
+			
 	
 			level:collideInvoices()
 			if level:isAlive() then
@@ -173,8 +197,12 @@ function scene:create( event )
 		if(event.phase == "began") then
 			jumpLimit = jumpLimit + 1
 			if jumpLimit < 2 then
-			  physics.addBody(player, "dynamic", { density = 0,radius = 0.01, friction = 0, bounce = 0, gravity = 0 })
-			  player:applyLinearImpulse(0, -0.25, player.x, player.y)			 
+				physics.setGravity( 0, 25 ) 
+				local vx, vy = player:getLinearVelocity()
+        		player:setLinearVelocity( vx, 0 )
+				physics.addBody(player, "dynamic", { density = 0,radius = 0.01, friction = 0, bounce = 0, gravity = 0 })
+				player:applyLinearImpulse(nil, -0.45, player.x, player.y)
+			  			 
 			end
 		jumpLimit = 0
 		end		

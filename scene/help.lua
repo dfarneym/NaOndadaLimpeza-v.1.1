@@ -32,7 +32,7 @@ function scene:create( event )
 	background.x = display.contentCenterX
 	background.y = display.contentCenterY
 	
-	local backButton = display.newImageRect( sceneGroup, "ui/background/menu.png", 80, 80 )
+	local backButton = display.newImageRect( sceneGroup, "ui/background/menu2.png", 80, 80 )
 	backButton.x = display.contentCenterX -220
 	backButton.y = display.contentCenterY +120
 

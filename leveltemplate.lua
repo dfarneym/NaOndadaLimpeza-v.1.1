@@ -87,10 +87,10 @@ end
 function level1:createPlayer(playerSheet, sequence)
 
     local sheetData = {
-        width=45;             
+        width=55;             
         height=60;              
-        numFrames=5;            
-        sheetContentWidth=225,  
+        numFrames=4;            
+        sheetContentWidth=220,  
         sheetContentHeight=60  
     }
 
@@ -101,8 +101,8 @@ function level1:createPlayer(playerSheet, sequence)
         local sequencesPlayer = {{
             name = "running",
             start = 1,
-            count = 4,
-            time = 300,
+            count =4,
+            time = 350,
            
         }}
 
@@ -309,7 +309,7 @@ function level1:moveInvoices()
 					invoices[a] = nil;
 				end, 1)
 			else
-				invoices[a].x = invoices[a].x  - (5/2)  -- spped/2
+				invoices[a].x = invoices[a].x  - (12/2)  -- spped/2
 			end
 		end
 	end
@@ -324,7 +324,7 @@ function level1:createIncomes(currentLevel)
 	local numColl = math.random(1, base.qtdMoney)
 	print(numColl)
 	
-	incomes[incCount] = display.newImageRect(base.moneys[numColl].path, 30, 30)
+	incomes[incCount] = display.newImageRect(base.moneys[numColl].path, 38, 30)
 	incomes[incCount].x = display.contentWidth + 50
 	incomes[incCount].y = height
 	incomes[incCount].name = base.moneys[numColl].name	
@@ -347,7 +347,7 @@ function level1:moveIncomes()
 					incomes[a] = nil;
 				end, 1)
 			else
-				incomes[a].x = incomes[a].x  - (5/2)  -- spped/2
+				incomes[a].x = incomes[a].x  - (6/2)  -- spped/2
 			end
 		end
 	end
