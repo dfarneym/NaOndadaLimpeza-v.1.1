@@ -5,8 +5,6 @@ oldbgmusic = audio.loadStream ("sound/HardScore.mp3")
 
 
 --##Sons##--
---bubblepop = audio.loadSound ("sound/Trash_Dropping_in_Dumpster.mp3")
---losesound = audio.loadSound ("sound/Trash_Dropping_in_Dumpster.mp3")
 jumpBtnAud = audio.loadStream( "sound/Mario_Jumping-Mike_Koenig.wav" )
 trashEffect = audio.loadStream( "sound/Trash_Dropping_in_Dumpster.wav" )
 trashEffect2 = audio.loadStream( "sound/sweeping_straw_broom-mike-koenig.wav")

@@ -1,7 +1,8 @@
 
 local composer = require "composer"
 
-local level = require("leveltemplate")
+local level = require("game1")
+
 
 --### Remove o botão ###--
 if system.getInfo( "androidApiLevel" ) and system.getInfo( "androidApiLevel" ) < 19 then

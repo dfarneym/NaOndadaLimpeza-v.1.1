@@ -3,7 +3,7 @@ local physics = require("physics") 		 	--Importa a Fisica
 
 local sounds = require( "soundsfile" )	 	--Importa o Som
 
-local level = require("game1")				--Importa o aqruivo leveltemplate.lua
+local level = require("game2")		--Importa o aqruivo leveltemplate.lua
 local scene = composer.newScene()			-- Cria uma nova cena pelo Composer
 
 composer.recycleOnSceneChange = true		-- Não sei o que faz
@@ -18,6 +18,7 @@ local jumpLimit = 0							-- Variável para Limite de pulo
 local finalScore
 
 
+
 function scene:create( event )	
 	
 	--## Seta o nível atual ## --
@@ -30,7 +31,7 @@ function scene:create( event )
 	background = level:createBackground(level:getCurrentLevel()) --(OK) Adc o background relativo ao level
 	backGroup:insert(background) -- OK
 
-	player = level:createPlayer("ui/sprite/surfista.png", "running")
+	player = level:createPlayer("ui/sprite/Mergulhador.png", "running")
 	mainGroup:insert(player) -- OK
 
 	level:setValues(1,100,0)	
@@ -42,10 +43,10 @@ function scene:create( event )
 	end
 	 --## Finish!
 
-    -- Termine o jogo ocultando os controles e exibindo o botão play again.
+    -- Finish the game by hiding the controls and displaying the play again button.
     function finish()
         controls:hide()
-        -- playAgainButton:show()
+        
         gotoNextPhase()
     end
 
@@ -64,7 +65,7 @@ function scene:create( event )
 	
 
 	local function creationLoop(event)
-		local aux = math.random(0, 18)
+		local aux = math.random(0, 12)
 
 		if aux <= 6 then
 			invoices = level:createInvoices(level:getCurrentLevel())
@@ -98,7 +99,15 @@ function scene:create( event )
 		if( event.other.type == "money") then
 			playSFX(trashEffect)
 			
-			if event.other.name == "LataDeOleo" then
+			if event.other.name == "garrafa" then
+				level:addCredit(event.other.value)
+			end	
+
+			if event.other.name == "lxo4" then
+				level:addCredit(event.other.value)
+			end	
+
+			if event.other.name == "LataDeOleo2" then
 				level:addCredit(event.other.value)
 			end
 
@@ -106,45 +115,26 @@ function scene:create( event )
 				level:addCredit(event.other.value)
 			end	
 
-			if event.other.name == "LataDeLixoCheia" then
+			if event.other.name == "LatasDeOleo4" then
 				level:addLife(event.other.value)
 			end
-
-			if event.other.name == "garrafa" then
-				level:addCredit(event.other.value)
-			end
-			if event.other.name == "banana" then
-				level:addCredit(event.other.value)
-			end
-
+		
 			if event.other.name == "pneu" then
 				level:addCredit(event.other.value)
 			end			
 
-			if event.other.name == "coco" then
+			if event.other.name == "LataDeOleo3" then
 				level:addCredit(event.other.value)
 			end	
 			
 			if event.other.name == "sacola" then
 				level:addCredit(event.other.value)
-			end							
-			
-			if event.other.name == "lxo1" then
-				level:addCredit(event.other.value)
-			end
-
-			if event.other.name == "lxo2" then
-				level:addCredit(event.other.value)
-			end
-
-			if event.other.name == "lxo3" then
-				level:addCredit(event.other.value)
-			end
-
-			if event.other.name == "lxo4" then
-				level:addCredit(event.other.value)
 			end		
-			
+		
+			if event.other.name == "petroleo" then
+				level:addCredit(event.other.value)
+			end			
+
 			level:collideIncomes()
 			timer.performWithDelay(1, function()
 				event.other.alpha = 0
@@ -157,19 +147,23 @@ function scene:create( event )
 		if( event.other.type == "bill") then
 			playSFX(trashEffect2)			
 		
-			if ( event.other.name == "cadeira") then
+			if ( event.other.name == "barcoPirata") then
 				level:reduceCredit(event.other.value)
 				level:reducelife(event.other.value)
 			end
 
-			if ( event.other.name == "guardaSol") then
+			if ( event.other.name == "barco1") then
 				level:reducelife(event.other.value)				
 			end		
-			if ( event.other.name == "LataDeLixo2") then
+			if ( event.other.name == "barco2") then
 				level:reduceCredit(event.other.value)
 
 			end	
 			
+			if ( event.other.name == "ancora") then
+				level:reduceCredit(event.other.value)
+
+			end	
 	
 			level:collideInvoices()
 			if level:isAlive() then
@@ -198,7 +192,7 @@ function scene:create( event )
 		if(event.phase == "began") then
 			jumpLimit = jumpLimit + 1
 			if jumpLimit < 2 then
-				physics.setGravity( 0, 35 ) 
+				physics.setGravity( 0, 10 ) 
 				local vx, vy = player:getLinearVelocity()
         		player:setLinearVelocity( vx, 0 )
 				physics.addBody(player, "dynamic", { density = 0,radius = 0.01, friction = 0, bounce = 0, gravity = 0 })
@@ -252,7 +246,7 @@ function scene:hide( event )
 	elseif ( phase == "did" ) then
 		physics.pause()
 		audio.stop( 1 )
-		composer.removeScene("level1")
+		composer.removeScene("level2")
 		composer.hideOverlay()
 		Runtime:removeEventListener( "collision", onLocalCollision)
 		Runtime:removeEventListener("touch", onTouch)

@@ -1,11 +1,11 @@
--- Include modules/libraries
+-- Incluir módulos / bibliotecas
 local composer = require( "composer")
 local widget = require( "widget" )
 local sounds = require( "soundsfile" )
 
-local level = require("leveltemplate")
+local level = require("game1")
 
--- Create a new Composer scene
+-- Criando uma nova cena do compositor
 local scene = composer.newScene()
 
 local background
@@ -48,10 +48,10 @@ function scene:show( event )
 	local phase = event.phase
 
 	if ( phase == "will" ) then
-		-- Code here runs when the scene is still off screen (but is about to come on screen)
+		-- O código aqui é executado quando a cena ainda está fora da tela (mas está prestes a aparecer na tela)
 
 	elseif ( phase == "did" ) then
-		-- Code here runs when the scene is entirely on screen
+		-- O código aqui é executado quando a cena está totalmente na tela
 		audio.play( musicTrack, { channel=1, loops=-1 } )
 
 	end
@@ -65,10 +65,12 @@ function scene:hide( event )
 	local phase = event.phase
 
 	if ( phase == "will" ) then
-		-- Code here runs when the scene is on screen (but is about to go off screen)
+		
+	--O código aqui é executado quando a cena está na tela (mas está prestes a sair da tela)
 
 	elseif ( phase == "did" ) then
-		-- Code here runs immediately after the scene goes entirely off screen
+		
+		-- O código aqui é executado quando a cena está na tela (mas está prestes a sair da tela)
 		audio.stop( 1 )
 
 	end
@@ -78,8 +80,8 @@ end
 -- destroy()
 function scene:destroy( event )
 
-	local sceneGroup = self.view
-	-- Code here runs prior to the removal of scene's view
+	local sceneGroup = self.view	
+	-- O código aqui é executado antes da remoção da visualização da cena
 	audio.dispose( musicTrack )
 
 end

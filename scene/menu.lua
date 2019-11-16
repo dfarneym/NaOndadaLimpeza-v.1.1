@@ -7,6 +7,7 @@ local physics = require("physics")
 local widget = require( "widget" )
 local sounds = require( "soundsfile" )
 local base = require( "base")
+local base2 = require( "base")
 
 --### Criando Coordenadas ###--
 local cX = display.contentCenterX -- Coordenada X
@@ -22,6 +23,11 @@ local function gotoGame()
 	
 end	
 
+local function gotoGame2()
+	playSFX(losesound)	 
+	composer.gotoScene( "scene.level2" )	
+	
+end	
 
 local function gotoHighscore()
 	composer.gotoScene( "scene.highscore", { time=800, effect="crossFade" } )
@@ -30,15 +36,6 @@ end
 local function gotoHelp()
 	composer.gotoScene( "scene.help", { time=800, effect="crossFade" } )
 end
-
-function gotoQuit()
-    if  system.getInfo("platformName")=="Android" then
-        native.requestExit()
-    else
-		os.exit() 
-	end
-end
-
 
 --## Criando grupos ###--
 local backGroup = display.newGroup()
@@ -55,31 +52,30 @@ local sceneGroup = self.view
 
 	local logo = display.newImageRect(mainGroup, "ui/menu/logo.png", 350, 80)
 	logo.x = cX -90
-	logo.y = cY-90
+	logo.y = cY-116
 	
-    local play = display.newImageRect(mainGroup, "ui/menu/start.png", 100, 70)
-    play.x = cX -200
-	play.y = cY +10	
-	
-    local score = display.newImageRect(mainGroup, "ui/menu/score.png", 100, 70)
-	score.x = cX -140
-	score.y = cY +80
-	
-    local quit = display.newImageRect(mainGroup, "ui/menu/quit.png", 90, 50)
-	quit.x = cX -40
-	quit.y = cY +100
+    local play = display.newImageRect(mainGroup, "ui/menu/start.png", 90, 60)
+    play.x = cX -230
+	play.y = cY +28
 
-	local help = display.newImageRect(mainGroup, "ui/menu/help.png", 60, 40)
-	help.x = cX +198
-	help.y = cY -90
+	local play2 = display.newImageRect(mainGroup, "ui/menu/start2.png", 90, 60)
+    play2.x = cX -135
+	play2.y = cY +70
+
+    local score = display.newImageRect(mainGroup, "ui/menu/score.png", 90, 60)
+	score.x = cX -30
+	score.y = cY +28
+	
+    local help = display.newImageRect(mainGroup, "ui/menu/help.png", 90, 60)
+	help.x = cX +27
+	help.y = cY -25
 
 		
-    play:addEventListener( "tap", gotoGame )
+	play:addEventListener( "tap", gotoGame )
+	play2:addEventListener( "tap", gotoGame2 )
 	score:addEventListener( "tap", gotoHighscore )
 	help:addEventListener( "tap", gotoHelp )
-	quit:addEventListener( "tap", gotoQuit )
-	
-	
+
 end
 
 

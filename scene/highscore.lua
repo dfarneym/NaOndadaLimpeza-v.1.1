@@ -3,7 +3,8 @@ local physics = require("physics")
 
 local sounds = require( "soundsfile" )	 	
 
-local level = require("leveltemplate")		
+local level = require("game1")	
+	
 local scene = composer.newScene()	
 
 
@@ -77,7 +78,7 @@ function scene:create( event )
 	-- ### Salvando as Scores ### --
 	saveScores()
 
-	background = display.newImageRect( sceneGroup, "ui/background/gameover.png", 600, 400 )
+	background = display.newImageRect( sceneGroup, "ui/background/gameover.png", 700, 400 )
 	background.x = display.contentCenterX
 	background.y = display.contentCenterY
 	
