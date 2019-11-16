@@ -1,5 +1,11 @@
 # Na Onda da Limpeza
 
+# Gênero
+- Plataforma educativa
+
+# Público alvo
+- Crianças a partir dos 5 anos, adolescentes e adultos em geral​
+
 # Objetivo Geral :
 - Coletar o lixo das praias
 
@@ -7,19 +13,20 @@
 - Viajar pelas praias para pegar onda e coletar o lixo deixado por pessoas que frequentam as praias.
 
 # Enredo e Personagens:
-- Beach Boy é um surfista que gostava de viajar pelo mundo para surfar em muitos picos e pegar diferentes ondas. E certa vez, quando surfava, encontrou muito lixo boiando, próximo das ondas; ele ficou muito triste com a quantidade de lixo que as pessoas deixavam na praia e decidiu que todo dia, antes de surfar, tiraria 1 hora para coletar o lixo que estivesse pela praia e, assim, tentar fazer a sua parte e ser exemplo para outras pessoas que frequentam aquele point.  
+- Beach Boy é um surfista que gostava de viajar pelo mundo para surfar em muitos picos e pegar diferentes ondas. E certa vez, quando surfava, encontrou muito lixo boiando, próximo das ondas; ele ficou muito triste com a quantidade de lixo que as pessoas deixavam na praia e decidiu que todo dia, antes de surfar, tiraria 1 hora para coletar o lixo que estivesse pela praia e, assim, tentar fazer a sua parte e ser exemplo para outras pessoas que frequentam aquela local.  
 
 # Personagem Principal:
 - Beach Boy
 
 # Inimigos:
-- São os obstaculos como o guarda-sol e a cadeira de praia.
+- Na praia: São os obstáculos como o guarda-sol, cadeira de praia , lata de lixo vazia.
+- No fundo do mar: São os obstáculos como os navios naufragados, ancoras, barcos quebrados.
 
 # Iteração do Jogador:
-- O jogador vai interagir direto com o personagem principal quando ele coletar o lixo que vai estar espalhado pela praia, ganhando assim pontos e life.
+- O jogador vai interagir direto com o personagem principal quando ele coletar o lixo que vai estar espalhado pela praia e no fundo do mar, ganhando assim pontos e life.
 
 # Controles:
-- No celular vai existir um botão para pular, desviar-se dos obstáculos e coletar o lixo. 
+- No smartphone vai existir um botão para pular e desviar-se dos obstáculos ou coletar os lixos. 
 
 # Diagrama de Navegação:
 ![diagrama para documentação](https://user-images.githubusercontent.com/53848638/65910286-c9b70c80-e3a0-11e9-951e-6007fe12095a.jpg)
@@ -34,4 +41,4 @@
 - De acordo com o tipo de lixo coletado, o jogador ganhará pontos. 
 
 # Como o Jogo Acaba:
-- Se o jogador colidir com o inimigo, o jogo será encerrado (game over).
+- Se o jogador colidir com os obstáculos que tiram life, o jogo será encerrado (game over).
