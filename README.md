@@ -1,6 +1,6 @@
 # Na Onda da Limpeza
 
-# Gênero
+## Gênero
 - Plataforma educativa
 
 # Público alvo
@@ -29,7 +29,7 @@
 - No smartphone vai existir um botão para pular e desviar-se dos obstáculos ou coletar os lixos. 
 
 # Diagrama de Navegação:
-![diagrama para documentação](https://user-images.githubusercontent.com/53848638/65910286-c9b70c80-e3a0-11e9-951e-6007fe12095a.jpg)
+![Diagrama](https://user-images.githubusercontent.com/53848638/68998172-8ef42f80-088d-11ea-8d40-d83ea7a8725a.jpg)
 
 # Regras do Jogo com Sistema de Pontuação:
 - O jogador deverá coletar determinada quantidade de lixo para ganhar pontos. 
