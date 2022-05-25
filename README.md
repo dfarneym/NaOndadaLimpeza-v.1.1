@@ -1,5 +1,5 @@
 # Na Onda da Limpeza
-[![NPM](https://img.shields.io/npm/l/react)]([https://github.com/dfarneym/userdept/blob/main/LICENCE])
+[![NPM](https://img.shields.io/npm/l/react)]([https://github.com/dfarneym/NaOndadaLimpeza-v.1.1/blob/master/LICENCE])
 
 ## Gênero
 - Plataforma educativa
